@@ -52,11 +52,12 @@ main,nav,footer{position:relative;z-index:2}
 .wrap{max-width:1120px;margin:0 auto;padding:0 22px}
 
 /* boot */
-#boot{position:fixed;inset:0;z-index:200;background:#02040a;color:var(--ok);font:14px/1.7 var(--mono);padding:8vh 7vw;overflow:hidden;transition:opacity .7s,visibility .7s}
+#boot{position:fixed;inset:0;z-index:200;background:#02040a;color:var(--ok);font:14px/1.7 var(--mono);padding:8vh 7vw;overflow:hidden;transition:opacity .5s,visibility .5s;animation:bootfail .4s 4.5s forwards}
+@keyframes bootfail{to{opacity:0;visibility:hidden}}
 #boot.done{opacity:0;visibility:hidden}
 #boot .hint{position:absolute;bottom:5vh;right:7vw;color:var(--dim)}
 #boot .ln{white-space:pre-wrap}
-#boot .k{color:var(--ok)}#boot .d{color:var(--dim)}
+#boot .k{color:var(--ok)}#boot .d{color:var(--dim)}#boot .cmd{color:#e8ebf2}#boot .go{color:var(--ac);font-weight:700}
 
 /* nav */
 nav{position:sticky;top:0;z-index:50;background:rgba(7,9,13,.94);border-bottom:1px solid var(--line)}
@@ -407,6 +408,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:3;opac
 }
 
 </style>
+<noscript><style>#boot{display:none}.rv{opacity:1;transform:none}</style></noscript>
 </head>
 <body>
 <div id="bar"></div><div id="bg"></div><div id="aurora"><i></i><i></i></div><div id="grid"></div><div id="spot"></div>
@@ -603,15 +605,17 @@ $('#yr').textContent=new Date().getFullYear();
  const boot=$('#boot'),log=$('#bootlog');
  let seen=false;try{seen=sessionStorage.getItem('booted')==='1'}catch(e){}
  const finish=()=>{if(boot.classList.contains('done'))return;boot.classList.add('done');try{sessionStorage.setItem('booted','1')}catch(e){}};
- if(seen||reduce||!/[?&]boot(=|&|$)/.test(location.search)){boot.classList.add('done');return}
- const L=[['ok','loading cloud tools (Azure, AWS)'],['ok','signing in to the cloud'],['ok','downloading the portfolio'],['ok','starting 24 small programs ......... 24/24 working'],['ok','health checks passing'],['ok','dashboards ready — welcome'],['','']];
+ if(seen||/[?&]noboot(=|&|$)/.test(location.search)){boot.classList.add('done');return}
+ const L=[['cmd','suyog@platform:~$ ./start-portfolio.sh'],['ok','loading cloud tools (Azure, AWS)'],['ok','signing in to the cloud'],['ok','pulling the latest portfolio build'],['ok','starting 24 services ......... 24/24 working'],['ok','health checks passing'],['ok','dashboards ready'],['go','welcome ›']];
  let i=0;const t=setInterval(()=>{
-  if(i>=L.length){clearInterval(t);setTimeout(finish,350);return}
+  if(i>=L.length){clearInterval(t);setTimeout(finish,450);return}
   const d=document.createElement('div');d.className='ln';
-  if(L[i][0]){const k=document.createElement('span');k.className='k';k.textContent='[  OK  ] ';d.appendChild(k);d.appendChild(document.createTextNode(L[i][1]))}
-  log.appendChild(d);i++},260);
+  const kind=L[i][0];
+  if(kind==='ok'){const k=document.createElement('span');k.className='k';k.textContent='[  OK  ] ';d.appendChild(k);d.appendChild(document.createTextNode(L[i][1]))}
+  else{d.className='ln '+kind;d.textContent=L[i][1]}
+  log.appendChild(d);i++},170);
  boot.addEventListener('click',finish);addEventListener('keydown',finish,{once:true});
- setTimeout(finish,4500);
+ setTimeout(finish,3200);
 })();
 
 /* ---------- scroll bar, spotlight, glass glow ---------- */
