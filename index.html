@@ -392,7 +392,14 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:3;opac
  .contact h2{font-size:clamp(26px,8vw,34px)}
  footer{margin-top:56px;padding-bottom:36px}
 }
-@media(prefers-reduced-motion:reduce){.fb{animation:none}*{animation:none!important;transition:none!important}html{scroll-behavior:auto}.rv{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){
+ #aurora i,.fb,.chip i,.caret,.core,.stage.run::after,.rel .glass:first-child::after,h1.name span{animation:none!important}
+ html{scroll-behavior:auto}
+ .rv{opacity:1;transform:none;transition:none}
+}
+html.nomo *,html.nomo *::before,html.nomo *::after{animation:none!important;transition:none!important}
+.motion{position:fixed;left:12px;bottom:12px;z-index:90;font:500 11px var(--mono);color:var(--dim);background:rgba(11,13,19,.82);border:1px solid var(--line);border-radius:999px;padding:7px 12px;cursor:pointer;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);opacity:.75;transition:opacity .2s,color .2s}
+.motion:hover,.motion:focus-visible{opacity:1;color:var(--text)}
 </style>
 </head>
 <body>
@@ -576,10 +583,17 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:3;opac
 
 <div id="pal" aria-hidden="true"><div class="pbox" role="dialog" aria-label="Command palette"><input id="pin" placeholder="Jump to a section or run an action…" autocomplete="off" spellcheck="false"><ul id="plist"></ul><div class="phint">↑ ↓ navigate · ↵ select · esc close</div></div></div>
 <div id="toast" role="status"></div>
+<button class="motion" id="motionBtn" type="button" aria-pressed="false" aria-label="Pause animations">⏸ pause motion</button>
 <script>
 document.documentElement.classList.add('js');
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const NOMO=()=>document.documentElement.classList.contains('nomo');
+(function(){const b=document.getElementById('motionBtn');
+ const set=on=>{document.documentElement.classList.toggle('nomo',on);b.setAttribute('aria-pressed',on);b.textContent=on?'▶ resume motion':'⏸ pause motion';b.setAttribute('aria-label',on?'Resume animations':'Pause animations')};
+ let saved=null;try{saved=localStorage.getItem('nomo')}catch(e){}
+ set(saved==='1');
+ b.addEventListener('click',()=>{const on=!NOMO();set(on);try{localStorage.setItem('nomo',on?'1':'0')}catch(e){}})})();
 const rnd=(a,b)=>a+Math.random()*(b-a);
 $('#yr').textContent=new Date().getFullYear();
 
@@ -681,7 +695,7 @@ $$('.ctx button').forEach(b=>b.addEventListener('click',()=>{setCtx(b.dataset.ct
 (function(){const R=['I keep apps online 24/7','terraform apply -auto-approve','I make deploys boring (the good kind)','Azure · AWS · Kubernetes'];
  const el=$('#typed');let ri=0,ci=0,del=false;
  if(reduce){el.textContent=R[0];return}
- (function tick(){const r=R[ri];el.textContent=r.slice(0,ci);
+ (function tick(){if(NOMO()){el.textContent=R[0];return setTimeout(tick,600)}const r=R[ri];el.textContent=r.slice(0,ci);
   if(!del&&ci===r.length){del=true;return setTimeout(tick,1600)}
   if(del&&ci===0){del=false;ri=(ri+1)%R.length}
   ci+=del?-1:1;setTimeout(tick,del?28:65)})()})();
@@ -710,7 +724,7 @@ function ev(cls,msg){const d=document.createElement('div');d.className=cls;const
  function frame(now){requestAnimationFrame(frame);if(!vis||document.hidden)return;
   c.clearRect(0,0,W,H);const D=140;
   for(const n of nodes){
-   if(!reduce){n.x+=n.vx;n.y+=n.vy;if(n.x<0||n.x>W)n.vx*=-1;if(n.y<0||n.y>H)n.vy*=-1;
+   if(!reduce&&!NOMO()){n.x+=n.vx;n.y+=n.vy;if(n.x<0||n.x>W)n.vx*=-1;if(n.y<0||n.y>H)n.vy*=-1;
     const dx=n.x-mouse.x,dy=n.y-mouse.y,d=Math.hypot(dx,dy);if(d<130&&d>0){n.x+=dx/d*1.1;n.y+=dy/d*1.1}}}
   for(let i=0;i<nodes.length;i++){const a=nodes[i];
    for(let j=i+1;j<nodes.length;j++){const b=nodes[j],d=Math.hypot(a.x-b.x,a.y-b.y);
