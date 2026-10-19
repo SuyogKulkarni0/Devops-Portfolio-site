@@ -40,7 +40,7 @@ h1,h2,h3{text-wrap:balance}
 p{text-wrap:pretty}
 .mono{font-family:var(--mono)}
 #bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--ac),var(--ac2));z-index:100;box-shadow:0 0 12px var(--ac)}
-#spot{position:fixed;inset:0;pointer-events:none;z-index:1;background:radial-gradient(520px circle at var(--mx,50%) var(--my,30%),var(--acg),transparent 60%);opacity:.32;mix-blend-mode:screen}
+#spot{position:fixed;inset:0;pointer-events:none;z-index:1;background:radial-gradient(520px circle at var(--mx,50%) var(--my,30%),var(--acg),transparent 60%);opacity:.32}
 #bg{position:fixed;inset:0;z-index:0;pointer-events:none;background:
  radial-gradient(900px 500px at 85% -5%,color-mix(in srgb,var(--ac2) 9%,transparent),transparent 60%),
  radial-gradient(800px 600px at -10% 40%,color-mix(in srgb,var(--ac) 7%,transparent),transparent 60%);}
@@ -58,7 +58,7 @@ main,nav,footer{position:relative;z-index:2}
 #boot .k{color:var(--ok)}#boot .d{color:var(--dim)}
 
 /* nav */
-nav{position:sticky;top:0;z-index:50;background:rgba(7,9,13,.74);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+nav{position:sticky;top:0;z-index:50;background:rgba(7,9,13,.94);border-bottom:1px solid var(--line)}
 nav .wrap{display:flex;align-items:center;gap:20px;padding-top:12px;padding-bottom:12px;font:13px var(--mono)}
 .logo{color:var(--text);font-weight:700;margin-right:auto;letter-spacing:.3px}
 .logo b{color:var(--ac)}
@@ -81,18 +81,18 @@ nav a.l.act::after,nav a.l:hover::after{transform:scaleX(1)}
 .pic .frame::before{content:"";position:absolute;inset:-14px;border-radius:38px;border:1px dashed var(--line);pointer-events:none}
 .pic img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:50% 25%;border-radius:25px;background:#0b121b}
 .pic:hover .frame{transform:rotate(-1.5deg) scale(1.015)}
-.fb{position:absolute;font:500 12px var(--mono);padding:8px 13px;border-radius:12px;background:rgba(11,13,19,.84);border:1px solid var(--line);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:var(--text);white-space:nowrap;box-shadow:0 12px 30px -10px rgba(0,0,0,.7);animation:floaty 6s ease-in-out infinite}
+.fb{position:absolute;font:500 12px var(--mono);padding:8px 13px;border-radius:12px;background:rgba(11,13,19,.95);border:1px solid var(--line);color:var(--text);white-space:nowrap;box-shadow:0 12px 30px -10px rgba(0,0,0,.7);animation:floaty 6s ease-in-out infinite}
 .fb i{font-style:normal;color:var(--ac);margin-right:7px}
 .fb.b3 i{color:var(--ok)}
 .fb.b1{top:9%;left:-30px}.fb.b2{bottom:20%;right:-26px;animation-delay:-2s}.fb.b3{bottom:-14px;left:12%;animation-delay:-4s}
 @keyframes floaty{50%{transform:translateY(-8px)}}
 @media(max-width:900px){.hero .in{grid-template-columns:1fr;gap:34px}.pic{order:-1;max-width:260px;justify-self:start}.fb.b1{left:auto;right:-6px}.fb.b2{right:auto;left:-6px;bottom:16%}.fb{font-size:11px;padding:6px 10px}}
 .chips{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:26px}
-.chip{font:12px var(--mono);padding:6px 12px;border:1px solid var(--line);border-radius:999px;background:var(--glass);backdrop-filter:blur(8px);color:var(--dim)}
+.chip{font:12px var(--mono);padding:6px 12px;border:1px solid var(--line);border-radius:999px;background:rgba(18,21,29,.9);color:var(--dim)}
 .chip i{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--ok);margin-right:8px;box-shadow:0 0 10px var(--ok);animation:pulse 2s infinite}
 @keyframes pulse{50%{opacity:.35}}
 h1.name{font-size:clamp(46px,7.4vw,100px);line-height:.95;margin:0;font-weight:800;letter-spacing:-.05em}
-h1.name span{display:block;padding-bottom:.1em;margin-bottom:-.06em;background:linear-gradient(100deg,#fff 0%,#f1f4fb 32%,var(--ac) 100%);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:flow 8s ease-in-out infinite alternate}
+h1.name span{display:block;padding-bottom:.1em;margin-bottom:-.06em;background:linear-gradient(100deg,#fff 0%,#f1f4fb 32%,var(--ac) 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
 h1.name span+span{-webkit-text-stroke:0;filter:drop-shadow(0 0 24px var(--acg))}
 @keyframes flow{to{background-position:100% 0}}
 .role{font:clamp(16px,2.4vw,24px) var(--mono);margin:26px 0 8px;min-height:1.6em;color:var(--text)}
@@ -104,7 +104,7 @@ h1.name span+span{-webkit-text-stroke:0;filter:drop-shadow(0 0 24px var(--acg))}
 .btn{font:600 14px var(--sans);padding:13px 22px;border-radius:11px;border:1px solid var(--ac);color:#07090d;background:var(--ac);transition:.25s;display:inline-flex;align-items:center;gap:8px}
 .btn:hover{filter:brightness(1.12);box-shadow:0 8px 30px var(--acg);transform:translateY(-2px)}
 .btn.alt{border-color:var(--line);color:var(--text);background:rgba(255,255,255,.04);font-weight:500}.btn.alt:hover{background:rgba(255,255,255,.09);border-color:rgba(255,255,255,.22);box-shadow:none;filter:none}
-#events{position:relative;z-index:2;margin-top:40px;font:12px/1.8 var(--mono);color:var(--dim);min-height:64px}
+#events{position:relative;z-index:2;margin-top:40px;font:12px/1.8 var(--mono);color:var(--dim);height:76px;overflow:hidden}
 #events div{animation:slide .5s both}
 @keyframes slide{from{opacity:0;transform:translateX(-12px)}}
 #events .ok{color:var(--ok)}#events .bad{color:var(--bad)}#events .warn{color:var(--warn)}
@@ -121,7 +121,7 @@ h2.t{font-size:clamp(32px,5vw,58px);line-height:1.04;margin:0 0 16px;letter-spac
 .rv{opacity:0;transform:translateY(30px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
 .rv.on{opacity:1;transform:none}
 html:not(.js) .rv{opacity:1;transform:none}
-.glass{background:linear-gradient(180deg,rgba(26,29,38,.7),rgba(14,16,22,.64));border:1px solid var(--line);border-radius:18px;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);position:relative;overflow:hidden;box-shadow:0 1px 0 rgba(255,255,255,.04) inset,0 18px 50px -20px rgba(0,0,0,.6);transition:border-color .3s,box-shadow .3s}
+.glass{background:linear-gradient(180deg,rgba(26,29,38,.93),rgba(15,17,23,.92));border:1px solid var(--line);border-radius:18px;position:relative;overflow:hidden;box-shadow:0 1px 0 rgba(255,255,255,.04) inset,0 18px 50px -20px rgba(0,0,0,.6);transition:border-color .3s,box-shadow .3s}
 .glass:hover{border-color:rgba(255,255,255,.18)}
 .glass::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .3s;background:radial-gradient(320px circle at var(--cx,50%) var(--cy,50%),var(--acg),transparent 70%)}
 .glass:hover::before{opacity:1}
@@ -177,7 +177,7 @@ html:not(.js) .rv{opacity:1;transform:none}
 .ring.rev{animation-direction:reverse}
 .slot{position:absolute;left:50%;top:50%;width:0;height:0}
 .ctr{position:absolute;left:0;top:0;transform:translate(-50%,-50%)}
-.lab{display:block;white-space:nowrap;font:12px var(--mono);padding:6px 12px;border-radius:999px;background:var(--glass);border:1px solid var(--line);color:var(--text);backdrop-filter:blur(6px);animation:spin var(--d) linear infinite reverse;transition:border-color .2s,color .2s}
+.lab{display:block;white-space:nowrap;font:12px var(--mono);padding:6px 12px;border-radius:999px;background:var(--glass);border:1px solid var(--line);color:var(--text);animation:spin var(--d) linear infinite reverse;transition:border-color .2s,color .2s}
 .ring.rev .lab{animation-direction:normal}
 .lab:hover{border-color:var(--ac);color:var(--ac)}
 @keyframes spin{to{transform:rotate(360deg)}}
@@ -264,7 +264,7 @@ footer .fl{display:flex;gap:22px;justify-content:center;flex-wrap:wrap;margin-bo
 #aurora i:nth-child(1){background:var(--ac);left:-18vmax;top:-14vmax}
 #aurora i:nth-child(2){background:var(--ac2);right:-22vmax;top:30vh;animation-duration:36s;animation-delay:-9s}
 @keyframes drift{to{transform:translate(9vmax,7vmax) scale(1.18)}}
-body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:3;opacity:.05;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:3;opacity:.035;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 /* ticker */
 .marq{margin-top:90px;overflow:hidden;border-block:1px solid var(--line);padding:18px 0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
 .mt{display:flex;width:max-content;animation:mq 45s linear infinite}
@@ -310,6 +310,9 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:3;opac
 .kv div:last-child{border-bottom:0}
 .kv .kl{color:var(--dim)}
 
+@media(hover:none){#spot,body::after{display:none}}
+#aurora i,.ring,.mt,.lab,.fb{will-change:transform}
+.lab{backface-visibility:hidden}
 .tagline{margin:18px 0 0;font:500 13.5px/1.7 var(--mono);color:var(--dim)}
 .tagline b{color:var(--ac);font-weight:600}
 .sfull{margin-top:18px;padding:0}
@@ -334,13 +337,13 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:3;opac
  .fb{font-size:10.5px;padding:5px 9px}
  .fb.b1{top:6%;right:-18px}.fb.b2{left:-18px;bottom:18%}.fb.b3{left:50%;transform:translateX(-50%);bottom:-13px;animation:none}
  .chips{margin-bottom:16px;gap:8px}.chip{font-size:11px;padding:5px 10px}
- .role{font-size:15px;margin:18px 0 6px}
+ .role{font-size:15px;margin:18px 0 6px;min-height:3.3em}
  .lead{font-size:15.5px;line-height:1.6}
  .btns{gap:10px;margin-top:20px}
  .btns .btn{flex:1 1 calc(50% - 5px);justify-content:center;padding:13px 12px;font-size:14px}
  .btns .btn:first-child{flex-basis:100%}
  .tagline{font-size:12px;margin-top:14px}
- #events{margin-top:22px;font-size:11px;min-height:56px;line-height:1.7}
+ #events{margin-top:22px;font-size:11px;height:128px;line-height:1.7}
  .slo{margin-top:32px;gap:12px;grid-template-columns:1fr 1fr!important}
  .slo .glass{padding:16px 14px}
  .slo b{font-size:30px}
@@ -397,9 +400,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:3;opac
  html{scroll-behavior:auto}
  .rv{opacity:1;transform:none;transition:none}
 }
-html.nomo *,html.nomo *::before,html.nomo *::after{animation:none!important;transition:none!important}
-.motion{position:fixed;left:12px;bottom:12px;z-index:90;font:500 11px var(--mono);color:var(--dim);background:rgba(11,13,19,.82);border:1px solid var(--line);border-radius:999px;padding:7px 12px;cursor:pointer;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);opacity:.75;transition:opacity .2s,color .2s}
-.motion:hover,.motion:focus-visible{opacity:1;color:var(--text)}
+
 </style>
 </head>
 <body>
@@ -583,17 +584,11 @@ html.nomo *,html.nomo *::before,html.nomo *::after{animation:none!important;tran
 
 <div id="pal" aria-hidden="true"><div class="pbox" role="dialog" aria-label="Command palette"><input id="pin" placeholder="Jump to a section or run an action…" autocomplete="off" spellcheck="false"><ul id="plist"></ul><div class="phint">↑ ↓ navigate · ↵ select · esc close</div></div></div>
 <div id="toast" role="status"></div>
-<button class="motion" id="motionBtn" type="button" aria-pressed="false" aria-label="Pause animations">⏸ pause motion</button>
 <script>
 document.documentElement.classList.add('js');
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-const NOMO=()=>document.documentElement.classList.contains('nomo');
-(function(){const b=document.getElementById('motionBtn');
- const set=on=>{document.documentElement.classList.toggle('nomo',on);b.setAttribute('aria-pressed',on);b.textContent=on?'▶ resume motion':'⏸ pause motion';b.setAttribute('aria-label',on?'Resume animations':'Pause animations')};
- let saved=null;try{saved=localStorage.getItem('nomo')}catch(e){}
- set(saved==='1');
- b.addEventListener('click',()=>{const on=!NOMO();set(on);try{localStorage.setItem('nomo',on?'1':'0')}catch(e){}})})();
+const NOMO=()=>false;
 const rnd=(a,b)=>a+Math.random()*(b-a);
 $('#yr').textContent=new Date().getFullYear();
 
@@ -755,6 +750,9 @@ function ev(cls,msg){const d=document.createElement('div');d.className=cls;const
   $('#dt').textContent=s.t;$('#dp').textContent=s.p;$('#dw').textContent=s.w;
   const g=$('#dg');g.textContent='';s.g.forEach(x=>{const t=document.createElement('span');t.className='tag';t.textContent=x;g.appendChild(t)})}
  show(0);
+ const lock=()=>{const d=$('.detail');d.style.minHeight='0';let max=0;for(let i=0;i<S.length;i++){show(i);max=Math.max(max,d.offsetHeight)}show(cur);d.style.minHeight=max+'px'};
+ lock();if(document.fonts&&document.fonts.ready)document.fonts.ready.then(lock);
+ let rt;addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(lock,200)});
  if(!reduce)setInterval(()=>{if(auto&&!document.hidden)show((cur+1)%S.length)},3200);
 })();
 
@@ -763,7 +761,7 @@ function ev(cls,msg){const d=document.createElement('div');d.className=cls;const
  const R=[{r:.2,d:'48s',rev:0,i:['Kubernetes','AKS','EKS','Helm','Docker']},
   {r:.33,d:'70s',rev:1,i:['Terraform','Ansible','Jenkins','Azure DevOps','GitHub Actions','SonarQube']},
   {r:.45,d:'95s',rev:0,i:['Azure','AWS','Prometheus','Grafana','Python','Bash','Django','React']}];
- const D={Kubernetes:"my daily driver. I kept IBM's DB2 running on it 99.09% of the time with automated pod recovery, and today it runs NICE NTRX.",AKS:'where NTRX lives today. I look after node pools, scaling, upgrades, networking and deployments.',EKS:'the AWS half of my Kubernetes life, next to AKS on the NTRX platform.',Helm:'I wrote Helm charts for every IBM DB2 environment, and I package NTRX releases with it so every deploy looks identical.',Docker:'I built Docker deployment pipelines at IBM that cut release time by 60%.',Terraform:'I build the NTRX cloud infrastructure with it instead of clicking around in portals.',Ansible:'my GoDaddy weapon: playbooks and reusable roles that set up hundreds of Nginx/PHP/MySQL web servers, with inventory-based batches and +40% release efficiency.',Jenkins:'at GoDaddy I wired it to Ansible for one-click, multi-environment deploys with health checks and auto-rollback. At IBM, Jenkins + SonarQube cut deploy time by 60%.','Azure DevOps':'part of my CI/CD toolkit for build, test and deploy pipelines on the Azure side.','GitHub Actions':'another CI/CD weapon in the belt for automated build-and-test.',SonarQube:'plugged into the IBM Jenkins pipelines, so every build got inspected before it shipped.',Azure:'home turf: AKS, Container Registry, Key Vault, VNet, Azure Monitor and Azure DevOps.',AWS:'EC2, S3, EKS and IAM: the second cloud that NTRX runs across.',Prometheus:'metrics and alerting behind the IBM DB2 monitoring and my incident dashboard.',Grafana:'dashboards for DB2, with alerts flowing straight into the incident dashboard I built.',Python:'wrote the GoDaddy migration scripts (content, database, DNS/SSL checks) and the backend of the IBM incident dashboard.',Bash:'everyday scripting glue around servers and deployments.',Django:'powered the REST API behind the IBM incident dashboard.',React:'the front end of that same incident dashboard.'};
+ const D={Kubernetes:"my daily driver. Kept IBM's DB2 up 99.09% of the time with automated pod recovery; today it runs NICE NTRX.",AKS:'where NTRX lives today. I look after node pools, scaling, upgrades, networking and deployments.',EKS:'the AWS half of my Kubernetes life, next to AKS on the NTRX platform.',Helm:'wrote Helm charts for every IBM DB2 environment; packages NTRX releases so every deploy looks identical.',Docker:'I built Docker deployment pipelines at IBM that cut release time by 60%.',Terraform:'I build the NTRX cloud infrastructure with it instead of clicking around in portals.',Ansible:'my GoDaddy weapon: playbooks and roles that set up hundreds of Nginx/PHP/MySQL servers in batches. +40% release efficiency.',Jenkins:'at GoDaddy, wired to Ansible for one-click deploys with auto-rollback. At IBM, with SonarQube, it cut deploy time 60%.','Azure DevOps':'part of my CI/CD toolkit for build, test and deploy pipelines on the Azure side.','GitHub Actions':'another CI/CD weapon in the belt for automated build-and-test.',SonarQube:'plugged into the IBM Jenkins pipelines, so every build got inspected before it shipped.',Azure:'home turf: AKS, Container Registry, Key Vault, VNet, Azure Monitor and Azure DevOps.',AWS:'EC2, S3, EKS and IAM: the second cloud that NTRX runs across.',Prometheus:'metrics and alerting behind the IBM DB2 monitoring and my incident dashboard.',Grafana:'dashboards for DB2, with alerts flowing straight into the incident dashboard I built.',Python:'wrote the GoDaddy migration scripts (content, database, DNS/SSL checks) and the IBM incident dashboard backend.',Bash:'everyday scripting glue around servers and deployments.',Django:'powered the REST API behind the IBM incident dashboard.',React:'the front end of that same incident dashboard.'};
  const o=$('#orbit');
  R.forEach((g,gi)=>{const v='var(--r'+(gi+1)+')';const tr=document.createElement('div');tr.className='track';tr.style.cssText='width:calc('+v+' * 200%);height:calc('+v+' * 200%);left:calc(50% - '+v+' * 100%);top:calc(50% - '+v+' * 100%)';o.appendChild(tr);
   const ring=document.createElement('div');ring.className='ring'+(g.rev?' rev':'');ring.style.setProperty('--d',g.d);
@@ -785,6 +783,10 @@ function ev(cls,msg){const d=document.createElement('div');d.className=cls;const
     info.scrollIntoView({block:'nearest',behavior:reduce?'auto':'smooth'})});
    c.appendChild(b)});
   box.appendChild(c);tg.appendChild(box)});
+ const info=$('#orbitInfo'),init=info.innerHTML;
+ const lockInfo=()=>{info.style.minHeight='0';let max=0;for(const t in D){info.textContent='';const d=document.createElement('div');d.style.fontSize='15px';const b=document.createElement('b');b.textContent=t+' → how I used it: ';d.appendChild(b);d.appendChild(document.createTextNode(D[t]));info.appendChild(d);max=Math.max(max,info.offsetHeight)}info.innerHTML=init;info.style.minHeight=max+'px'};
+ lockInfo();if(document.fonts&&document.fonts.ready)document.fonts.ready.then(lockInfo);
+ let rt2;addEventListener('resize',()=>{clearTimeout(rt2);rt2=setTimeout(lockInfo,200)});
 })();
 
 /* ---------- chaos pods ---------- */
