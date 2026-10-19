@@ -561,7 +561,7 @@ html.nomo *,html.nomo *::before,html.nomo *::after{animation:none!important;tran
 <section id="terminal">
  <div class="eyebrow rv">interactive</div>
  <h2 class="t rv">Talk to my terminal.</h2>
- <p class="sub rv">Tap a suggestion or type your own. Real commands, fake cluster, made-up data, zero risk of paging anyone.</p>
+ <p class="sub rv">Tap a suggestion or type your own: try <span class="mono c-ac">skills</span>, <span class="mono c-ac">education</span> or <span class="mono c-ac">experience</span>. A few hidden commands are waiting too.</p>
  <div class="term rv">
   <div class="tb"><i style="background:#ff5f56"></i><i style="background:#ffbd2e"></i><i style="background:#27c93f"></i><span>suyog@platform — bash</span></div>
   <div id="out" aria-live="polite"></div>
@@ -810,7 +810,9 @@ function ev(cls,msg){const d=document.createElement('div');d.className=cls;const
  const out=$('#out'),inp=$('#cmd');
  const P=(t,c)=>{const d=document.createElement('div');if(c)d.className=c;d.textContent=t;out.appendChild(d);out.scrollTop=out.scrollHeight};
  const cmds={
-  help:()=>['Try any of these (or tap the buttons below):','  about · skills · experience · projects · certs · contact','  kubectl get pods   → what is running on the servers','  helm list          → which apps are installed','  terraform plan     → check the cloud against the blueprint','  ctx azure|aws      → switch colour theme','  neofetch · uptime · clear'],
+  help:()=>['Try any of these (or tap the buttons below):','  about       who I am','  skills      what I work with','  experience  where I have worked','  education   degrees and schooling','  projects    what I have built','  certs       my certifications','  contact     phone, email, LinkedIn','  resume      download my resume','  clear       clean the screen','','psst: there are a few hidden commands. Engineers might guess them.'],
+  education:()=>['B.E. Information Technology · 2019–2022','  St. Vincent Pallotti College of Engineering & Technology, Nagpur · CGPA 9.1/10','Diploma in Computer Engineering · 2017–2019','  Government Polytechnic Nagpur · 86.92%','Secondary School Certificate · 2015–2016','  Khandelwal English High School, Akola · 89.80%'],
+  resume:()=>{const a=document.createElement('a');a.href='Suyog_Kulkarni_Resume.pdf';a.download='Suyog_Kulkarni_Resume.pdf';document.body.appendChild(a);a.click();a.remove();return['Downloading Suyog_Kulkarni_Resume.pdf …']},
   about:()=>['Suyog Kulkarni — Platform & DevOps Engineer, 4+ yrs.','Azure · AWS · Kubernetes · Terraform · Helm · CI/CD · Observability.'],
   skills:()=>['cloud      Azure (AKS, ACR, Azure DevOps, Monitor, Key Vault, VNet) · AWS (EC2, S3, EKS, IAM)','containers Kubernetes · Docker · Helm','automation Terraform · Ansible · Jenkins · GitHub Actions · SonarQube','observe    Prometheus · Grafana · Azure Monitor','code       Python · Bash · JavaScript · Java · SQL · Django · React'],
   experience:()=>['v3.0  2026–now   Platform Engineer, Xoriant (NICE NTRX · AKS)','v2.0  2025       DevOps Engineer, Persistent (IBM DB2 on K8s)','v1.0  2022–2025  DevOps Automation Engineer, Persistent (GoDaddy migration)'],
@@ -839,8 +841,8 @@ function ev(cls,msg){const d=document.createElement('div');d.className=cls;const
   else if(e.key==='ArrowUp'&&hist.length){hi=Math.max(0,hi-1);inp.value=hist[hi];e.preventDefault()}
   else if(e.key==='ArrowDown'){hi=Math.min(hist.length,hi+1);inp.value=hist[hi]||'';e.preventDefault()}});
  out.addEventListener('click',()=>inp.focus());
- ['help','kubectl get pods','helm list','terraform plan','ctx aws','neofetch'].forEach(s=>{const b=document.createElement('button');b.textContent=s;b.addEventListener('click',()=>run(s));$('#sug').appendChild(b)});
- P('Welcome to suyog-os. Type "help" or tap a suggestion below.','c-dim');
+ ['about','skills','experience','education','projects','certs','contact','resume'].forEach(s=>{const b=document.createElement('button');b.textContent=s;b.addEventListener('click',()=>run(s));$('#sug').appendChild(b)});
+ P('Welcome! Tap a suggestion below, or type "help" to see everything.','c-dim');
 })();
 </script>
 </body>
